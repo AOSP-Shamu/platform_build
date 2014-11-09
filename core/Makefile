@@ -1493,7 +1493,6 @@ INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/AOSP-Shamu-$(today).zip
 $(INTERNAL_OTA_PACKAGE_TARGET): KEY_CERT_PAIR := $(DEFAULT_KEY_CERT_PAIR)
 
 $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
-<<<<<<< HEAD
 	@echo "Package OTA: $@"
 	$(hide) MKBOOTIMG=$(MKBOOTIMG) \
 	   ./build/tools/releasetools/ota_from_target_files -v \
