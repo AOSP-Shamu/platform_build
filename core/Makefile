@@ -142,6 +142,8 @@ OEM_THUMBPRINT_PROPERTIES := $(filter $(KNOWN_OEM_THUMBPRINT_PROPERTIES),\
 
 # Display parameters shown under Settings -> About Phone
 ifeq ($(TARGET_BUILD_VARIANT),user)
+  # Hack for releasing with user variant, but some Google Apps limiting access to test-keys.	
+	TARGET_BUILD_TYPE=userdebug
   # User builds should show:
   # release build number or branch.buld_number non-release builds
 
@@ -155,6 +157,7 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
 else
   # Non-user builds should show detailed build information
   BUILD_DISPLAY_ID := $(build_desc)
+  TARGET_BUILD_TYPE="$(TARGET_BUILD_VARIANT)"
 endif
 
 # Whether there is default locale set in PRODUCT_PROPERTY_OVERRIDES
@@ -200,7 +203,7 @@ ifneq ($(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_OEM_PROPERTIES),)
 	$(hide) $(foreach prop,$(PRODUCTS.$(INTERNAL_PRODUCT).PRODUCT_OEM_PROPERTIES), \
 		echo "import /oem/oem.prop $(prop)" >> $@;)
 endif
-	$(hide) TARGET_BUILD_TYPE="$(TARGET_BUILD_VARIANT)" \
+	$(hide) 
 			TARGET_BUILD_FLAVOR="$(TARGET_PRODUCT)-$(TARGET_BUILD_VARIANT)" \
 			TARGET_DEVICE="$(TARGET_DEVICE)" \
 			PRODUCT_NAME="$(TARGET_PRODUCT)" \
