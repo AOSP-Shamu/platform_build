@@ -1488,7 +1488,7 @@ ifneq ($(recovery_fstab),)
 # ------------------------------------
 today := $(shell date -u +%Y%m%d)
 
-INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/AOSP-5.1.1-$today-jflte.zip
+INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/AOSP-5.1.1-$(today)-jflte.zip
 
 $(INTERNAL_OTA_PACKAGE_TARGET): KEY_CERT_PAIR := $(DEFAULT_KEY_CERT_PAIR)
 
